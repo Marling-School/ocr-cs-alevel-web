@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:JoeSharp/VidLearn_JavaScript.git",
   "author": "Joe Sharp",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  }
 }
