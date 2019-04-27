@@ -1,0 +1,9 @@
+{
+  "name": "VidLearn_JavaScript",
+  "version": "1.0.0",
+  "description": "A dumping ground for any examples I write in JavaScript in support of my SKE",
+  "main": "index.js",
+  "repository": "git@github.com:JoeSharp/VidLearn_JavaScript.git",
+  "author": "Joe Sharp",
+  "license": "MIT"
+}
