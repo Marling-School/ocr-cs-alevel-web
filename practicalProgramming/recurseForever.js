@@ -1,0 +1,5 @@
+function chickenOrEgg() {
+    chickenOrEgg()
+}
+
+chickenOrEgg()
