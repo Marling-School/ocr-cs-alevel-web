@@ -1,31 +1,45 @@
-const { Stack } = require('./Stack');
+const { Stack } = require("./Stack");
 
-let myStack = new Stack(5);
-myStack.push(5);
-myStack.push(7);
-myStack.push(10);
-let a = myStack.pop();
-myStack.push(21);
-myStack.push(54);
-let b = myStack.pop();
-myStack.push(2);
-let c = myStack.pop();
-myStack.push(6);
-let d = myStack.pop();
-myStack.push(13);
-let e = myStack.pop();
-myStack.push(19);
-myStack.push(28);
-let f = myStack.pop();
-let g = myStack.pop();
-let h = myStack.pop();
-console.log('Stack 1 Result', { a, b, c, d, e, f, g, h, myStack })
+test("Stacking Numbers", () => {
+  let myStack = new Stack(5);
+  myStack.push(5);
+  myStack.push(7);
+  myStack.push(10);
+  let a = myStack.pop();
+  myStack.push(21);
+  myStack.push(54);
+  let b = myStack.pop();
+  myStack.push(2);
+  let c = myStack.pop();
+  myStack.push(6);
+  let d = myStack.pop();
+  myStack.push(13);
+  let e = myStack.pop();
+  myStack.push(19);
+  myStack.push(28);
+  let f = myStack.pop();
+  let g = myStack.pop();
+  let h = myStack.pop();
 
-let myStack2 = new Stack(5);
-myStack2.push('Joe');
-myStack2.push('Kate');
-let w = myStack2.pop()
-myStack2.push('Tom');
-let x = myStack2.pop();
-let y = myStack2.pop();
-console.log('Stack Two Result', { w, x, y, myStack2 })
+  expect(a).toBe(10);
+  expect(b).toBe(54);
+  expect(c).toBe(2);
+  expect(d).toBe(6);
+  expect(e).toBe(13);
+  expect(f).toBe(28);
+  expect(g).toBe(19);
+  expect(h).toBe(21);
+});
+
+test("Stacking Names", () => {
+  let myStack2 = new Stack(5);
+  myStack2.push("Joe");
+  myStack2.push("Kate");
+  let x = myStack2.pop();
+  myStack2.push("Tom");
+  let y = myStack2.pop();
+  let z = myStack2.pop();
+  expect(x).toBe("Kate");
+  expect(y).toBe("Tom");
+  expect(z).toBe("Joe");
+});
