@@ -13,9 +13,9 @@ test("Queuing Numbers", () => {
   let c = myCQ.dequeue();
   myCQ.enqueue(6);
   let d = myCQ.dequeue();
-  myCQ.enqueue(13);
-  let e = myCQ.dequeue();
   myCQ.enqueue(19);
+  let e = myCQ.dequeue();
+  myCQ.enqueue(27);
   myCQ.enqueue(28);
   let f = myCQ.dequeue();
   let g = myCQ.dequeue();
@@ -28,5 +28,5 @@ test("Queuing Numbers", () => {
   expect(e).toBe(54);
   expect(f).toBe(2);
   expect(g).toBe(6);
-  expect(h).toBe(13);
+  expect(h).toBe(19);
 });
