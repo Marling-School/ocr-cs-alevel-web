@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Programming Quiz</title>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="quiz.js"></script>
+  </head>
+  <body>
+    <h1>Programming Quiz</h1>
+
+    <!-- Wrap the input elements in a form, and use the form name to retrieve them in the JS -->
+    <form name="quizForm">
+      <div>
+        <!-- Using a DIV around the label and input to keep them together -->
+        <label for="firstName">First Name</label>
+        <input name="firstName" />
+      </div>
+
+      <!-- Note that each radio button here has the same name, but only within a single question -->
+      <div>
+        <label> 1) Important factors for climate change</label>
+        <input type="radio" name="climateFactor" value="A1" />a) Vegetation
+        coverage on the land<br />
+        <input type="radio" name="climateFactor" value="A2" />b) Carbon dioxide
+        content of the oceans<br />
+        <input type="radio" name="climateFactor" value="A3" />c) Quantity of
+        greenhouse gases in the atmosphere<br />
+        <input type="radio" name="climateFactor" value="A4" />d) Meteorite
+        impacts<br />
+      </div>
+
+      <!-- The radio buttons here have a different name from the previous question -->
+      <div>
+        <label>2) Various caused for Air Pollution</label>
+        <input type="radio" name="airPollutionCause" value="B1" />a) The burning
+        of fossil fuels<br />
+        <input type="radio" name="airPollutionCause" value="B2" />b) No Mining
+        operations<br />
+        <input type="radio" name="airPollutionCause" value="B2" />c) Not having
+        enough Indoor air pollutions<br />
+      </div>
+
+      <!-- Another set of radio buttons, with a different name again -->
+      <div>
+        <label>3) Name of the greenhouse gas causing global warming</label>
+        <input type="radio" name="greenhouseGas" value="C1" />b) nitrogen
+        oxide<br />
+        <input type="radio" name="greenhouseGas" value="C2" />a) carbon
+        dioxide<br />
+        <input type="radio" name="greenhouseGas" value="C3" />c) oxygen<br />
+      </div>
+    </form>
+
+    <!-- Put this outside the form, to prevent submitting the page -->
+    <button onclick="return onQuizComplete()">Mark Quiz</button>
+
+    <div id="answersGiven"></div>
+    <div id="outcome"></div>
+  </body>
+</html>

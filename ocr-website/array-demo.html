@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <style>
+      #divGreeting {
+        border: solid thick black;
+        padding: 1rem;
+        margin: 1rem;
+      }
+    </style>
+    <script>
+      // Declare an array of greetings.
+      const greetings = ["Hello", "Bonjour", "Hi", "Howdy"];
+      var greetingIndex = 0;
+
+      const colours = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "violet"
+      ];
+      var colourIndex = 0;
+
+      function nextGreeting() {
+        var divGreeting = document.getElementById("divGreeting");
+        var spanGreeting = document.getElementById("spanGreeting");
+        console.log("Indexes", { greetingIndex, colourIndex });
+        spanGreeting.innerHTML = greetings[greetingIndex];
+        divGreeting.style.borderColor = colours[colourIndex];
+
+        // Iterate the index, wrap around at array length
+        greetingIndex += 1;
+        greetingIndex %= greetings.length;
+
+        colourIndex += 1;
+        colourIndex %= colours.length;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Demo of Arrays</h1>
+    <div id="divGreeting">
+      <span id="spanGreeting">CLICK</span>
+      <span> World</span>
+    </div>
+
+    <button onclick="nextGreeting()">Click Me</button>
+  </body>
+</html>

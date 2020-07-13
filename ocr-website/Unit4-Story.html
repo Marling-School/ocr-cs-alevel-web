@@ -1,0 +1,293 @@
+<html>
+  <head>
+    <title>OCR A Level - Unit 4: Networks</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Computer Networks - A Story</h1>
+      <a href="/">Back Home</a>
+      <p>
+        I will tell you a story about a time I received an email from my ‘bank’
+        and how I logged into the real bank’s website whilst on my school Wi-Fi
+        to check what was going on. During this story we will hit every aspect
+        of the AS Level Networking module. So, buckle up!
+      </p>
+      <p>
+        First, I had to connect to the school Wi-Fi, for which my laptop
+        requires a <strong>NIC (Network Interface Card)</strong> and the school
+        has a <strong>WAP (Wireless Access Point)</strong>. The Wi-Fi uses
+        <strong>encryption</strong> over the air interface to prevent people
+        listening in on the traffic.
+      </p>
+      <p>
+        My laptop is given an <strong>IPv4 address</strong> within the school
+        <strong>LAN (Local Area Network)</strong>, which uses a
+        <strong>proxy</strong> to allow the school to filter traffic and monitor
+        what students and teachers are visiting.
+      </p>
+      <p>
+        I opened Outlook and using
+        <strong>POP3 (Post Office Protocol)</strong> the Outlook client
+        downloaded my emails onto my computer. This deleted them from the
+        server, which I prefer for my personal emails. My school emails are
+        configured to use
+        <strong>IMAP (Internet Message Access Protocol)</strong>, which means I
+        can read them in multiple places because they persist on the server. The
+        email was sent to me using
+        <strong>SMTP (Simple Mail Transfer Protocol)</strong>
+      </p>
+      <p>
+        I received an email from ‘my bank’ indicating that there was a problem
+        with my account. A few things made me suspicious
+      </p>
+      <ul>
+        <li>The email was not sent to my name</li>
+        <li>
+          The banks email address used a double dotted Ö instead of the normal
+          ‘o’.
+        </li>
+        <li>There were a few misspellings.</li>
+        <li>
+          The email gave me a ‘secure link’ to click on to sort out the issue,
+          which used http://107.89.44.1/ as the address
+        </li>
+      </ul>
+      <p>
+        It was an obvious <strong>phishing</strong> scam that had somehow
+        survived the spam filter, so I reported it and deleted it. I wanted to
+        be sure my account was ok though, so I decided to log onto my online
+        bank. The scam was either trying to harvest my details or infect my
+        machine with <strong>malware (Malicious Software)</strong>.
+      </p>
+      <p>
+        I opened my web browser and did a quick search for ‘nationwide bank’ in
+        the address bar. This submitted a search to Google that trawled their
+        index looking for relevant sites. Google maintains an
+        <strong>index</strong> of all the pages its
+        <strong>web crawlers</strong> find and the pages are ranked according to
+        a variety of factors. Given that I was searching for a well-known
+        organisation, the top hit was the official site for my bank. I clicked
+        on the <strong>hyperlink</strong> to visit the site
+        https://www.nationwide.co.uk/home
+      </p>
+      <p>
+        This is the <strong>URL (Uniform Resource Locator)</strong> for the
+        banks website. It is made up of a protocol (https), domain
+        (www.nationwide.co.uk) and a specific resource on that site (/home)
+      </p>
+      <p>
+        Before my browser can visit the site, it needs to do a
+        <strong>DNS (Domain Name Service)</strong> search for
+        www.nationwide.co.uk in order to retrieve an IP address. The DNS request
+        is sent to the schools DNS server. The school DNS doesn’t have a cached
+        value for my banks site, so it bounces the request up to the ISP’s DNS
+        which then must fall back to the root DNS server to find out where the
+        .uk server is. The <strong>.uk</strong> server then refers to the
+        <strong>.co</strong> server to get a specific address for Nationwide’s
+        website, so the response eventually comes back with an IP address to
+        visit having resolved the domain from right to left.
+      </p>
+      <p>
+        Once the IP address has come back, my browser can then compose a
+        <strong>HTTP (HyperText Transfer Protocol)</strong> request to the web
+        server to get the banks home page. The web browser contains an
+        implementation of this <strong>Application Layer</strong> protocol. It
+        makes the request using the operating system networking libraries.
+      </p>
+      <p>
+        The operating system contains an implementation of
+        <strong>TCP/IP</strong>. This <strong>Transport Layer</strong> protocol
+        is responsible for breaking up application layer traffic into
+        <strong>packets</strong> and tagging the packets with a port number so
+        they can be given to the right service on the web server. The browser
+        makes requests on port 443 by default, this is the convention for
+        <strong>HTTPS</strong>.
+      </p>
+      <p>
+        My laptop has a <strong>private IP address</strong> within the school
+        <strong>LAN (Local Area Network)</strong>, and it is sending the request
+        to the bank site <strong>public IP address</strong>, so it composes the
+        IP header as part of the
+        <strong>Internet Layer/Network Layer</strong> protocol. This means each
+        packet has the address of the source and destination for the
+        conversation. The public IP address is valid within the Internet, which
+        is the largest example of a <strong>WAN (Wide Area Network)</strong>.
+      </p>
+      <p>
+        The Network Interface Card has a <strong>MAC address</strong>, it needs
+        to get the packet out to the internet, so it puts the MAC address of the
+        school <strong>Router</strong>
+        onto each packet and sends them out.
+      </p>
+      <p>
+        Once the packets are on the network, they go through a number of
+        switches. Each Switch is capable of determining which outgoing link to
+        send a packet is on based on the MAC Address. This MAC routing ensures
+        the packet gets to the Router. The school uses a star topology.
+      </p>
+      <p>
+        The <strong>Router</strong> is then capable of looking at the
+        destination IP address (the one for the bank) and determines that it
+        should send the packet out onto the public internet via it’s
+        <strong>ISP (Internet Service Provider)</strong>. The ISP is connected
+        to a large regional network which in turn is connected to the
+        <strong>Internet Backbone</strong>.
+      </p>
+      <p>
+        The HTTP request is passed through the school’s
+        <strong>proxy server</strong> which runs
+        <strong>packet sniffing</strong> and creates
+        <strong>audit logs</strong> for all traffic. This allows the school IT
+        admin to determine the <strong>who, what, when, where & why</strong> for
+        all the traffic on its network.
+      </p>
+      <p>
+        Each packet takes its own route, based on the availability of networks
+        links and other traffic. The implementation of the TCP/IP protocol at
+        the destination end can put together the numbered packets even if they
+        arrive out of order. This <strong>packet switching</strong> allows
+        transmission resources to be efficiently used.
+      </p>
+      <p>
+        At the bank’s website, the packets are put through a
+        <strong>DOS (Denial of Service)</strong> filter which protects the bank
+        from going down if hackers try to overwhelm it with resources. One of
+        the mechanisms they use for this is a <strong>Firewall</strong>, which
+        filters traffic based on port number & IP addresses. It also scans
+        requests for malicious content.
+      </p>
+      <p>
+        The web server listening on port 443 and a SSL handshake is undertaken
+        (which requires a bit of back and forth between my machine and the
+        banks) to establish an encrypted link using
+        <strong>private key cryptography</strong>. My web browser checks the
+        <strong>digital certificate</strong> of the bank against its known
+        certificate authorities.
+      </p>
+      <p>
+        Now that a secure link is established, the bank can send back the actual
+        website content. This is initially delivered as a
+        <strong>HTML (HyperText Markup Language)</strong> page. The HTML tells
+        the browser the structure and content of the page. The browser processes
+        the page content and finds it references the following resources:
+      </p>
+      <ul>
+        <li><strong>CSS (Cascading Style Sheet)</strong></li>
+        <li>
+          <strong>JavaScript</strong> source file,
+          <strong>interpreted</strong> by my browser which can generate and
+          execute the appropriate <strong>machine code</strong>.
+        </li>
+      </ul>
+      <p>
+        It requests both of these resources from the web server before it can
+        render the page properly.
+      </p>
+      <p>
+        The CSS is used to determine the rules for layout and colour used for
+        the website. The JavaScript is used for
+        <strong>client-side validation</strong> for the login.
+      </p>
+      <p>
+        A login button is near the top of the website, clicking this brings up a
+        dialog in the web page. JavaScript is used to determine the behaviour of
+        this dynamic content. The login requires my customer number and a few
+        specific digits of my internet pass code.
+      </p>
+      <p>
+        I accidentally type in letters with my customer number, the JavaScript
+        notices this by reading the form value with:
+      </p>
+
+      <p>
+        <code>document.forms['login']['customer-number'].value; </code>
+      </p>
+      <p>
+        and makes changes to the styling of the input box to highlight it in red
+        and display a message indicating the error using the code:
+      </p>
+      <p>
+        <code
+          >document.getElementById('txt-customer-number').style.color='red';</code
+        >
+      </p>
+      <p>
+        This prevents me submitting the form which saves the server from
+        processing my bad input and gives me instant feedback for a nicer user
+        experience. I correct my error and click login.
+      </p>
+      <p>
+        The server does its own validation of my input, to protect it from
+        things like <strong>SQL Injection</strong>, and in general to enforce
+        the rules of the system.
+      </p>
+      <p>
+        The follow-on page asks for a 6-digit code generated by my
+        <strong>2-factor authentication</strong> app on my phone. The phone is
+        <strong>‘something I have’</strong> which in addition to
+        <strong>‘something I know’</strong> (i.e. the internet passcode) means I
+        have 2 factors to authenticate to the website. I bring up the app on my
+        phone, which itself is connected to the internet via the mobile phone
+        network. I logged into my laptop using a fingerprint scanner, which is
+        the third factor <strong>'something I am'</strong>.
+      </p>
+      <p>
+        The mobile phone network is 4G. 4G uses a completely different protocol
+        stack to connect my phone (i.e. not IP), and a
+        <strong>Gateway</strong> within the mobile network is used to connect
+        the two dissimilar networks (4G core network & public internet).
+      </p>
+      <p>
+        I submit the 2-factor code and am logged into the website. I see no red
+        flags or issues but it’s worth phoning my bank to be sure I haven’t been
+        subject to identity theft. I phone the bank from my mobile device and it
+        sets up a <strong>circuit switched</strong> connection to the bank. This
+        means that dedicated transmission resources are setup for the voice call
+        and all traffic goes via this route until the call is terminated.
+        According to my bank, all is well so false alarm.
+      </p>
+      <p>
+        Since my pulse has been raised by this, I decide to buy an
+        <strong>Anti-virus</strong> package for my laptop. The purchase is
+        handled online, and the installation file is delivered via the
+        Application Layer protocol
+        <strong>FTP (File Transfer Protocol)</strong>. The anti-virus software
+        has to keep it’s known malware signatures up to date, so it makes
+        regular attempts to update itself.
+      </p>
+      <p>
+        Upon installing the anti-virus, it immediately flags up issues with
+        files I had downloaded via a <strong>peer to peer</strong> BitTorrent
+        system. It transpires that my download of series 8 of Game of Thrones
+        was a <strong>trojan horse</strong> containing code that would execute
+        if I happened to watch them using Windows Media Player!
+      </p>
+      <p>
+        I delete the offending material, which was prevented from doing harm by
+        the <strong>User Access Controls</strong> in place on my Operating
+        System. When playing videos, if I am prompted for the root password,
+        something is clearly wrong.
+      </p>
+      <p>
+        I decide to check the <strong>Acceptable Use Policy</strong> for the
+        school network for any actions I should take in the event of having
+        found a <strong>virus</strong> on a machine I had connected to the
+        network. The policy is found on a network drive that I only have read
+        access to, but it links to a web form on the school
+        <strong>Intranet</strong> where I should register the incident.
+      </p>
+      <p>
+        When IT admin receive the information from this web form, they can do
+        <strong>digital forensics</strong> on their
+        <strong>audit logs </strong> to look for any indicators that the virus
+        was active, and they can look for any evidence of further infection.
+      </p>
+    </div>
+  </body>
+</html>

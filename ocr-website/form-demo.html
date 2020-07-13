@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script>
+      function convertToBinary(number) {
+        return (number * 1).toString(2);
+      }
+
+      function convertDecimalToBinary() {
+        // Extract the value from the decimal <input> using form & input 'name'
+        var decimalInput = document.forms["binary-convert"]["decimal"].value;
+
+        // Validate the input
+        if (decimalInput == "") {
+          document.getElementById("txtDecimal").style.color = "red";
+          return;
+        }
+
+        // Run the conversion
+        var asBinary = convertToBinary(decimalInput);
+        var txtBinary = document.getElementById("binary-output");
+        txtBinary.innerHTML = asBinary;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Form Demo</h1>
+    <a href="/">Back Home</a>
+    <form name="binary-convert">
+      <label for="txtDecimal">Decimal Number</label>
+      <input id="txtDecimal" name="decimal" type="number" value="45" />
+      <button onclick="convertDecimalToBinary()" type="button">Convert</button>
+    </form>
+
+    <p id="binary-output"></p>
+
+    <p>
+      The same thing using bootstrap is
+      <a href="form-demo-bootstrap.html">here</a>.
+    </p>
+  </body>
+</html>

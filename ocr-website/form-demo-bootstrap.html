@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script>
+      function convertToBinary(number) {
+        return (number * 1).toString(2);
+      }
+
+      function convertDecimalToBinary() {
+        // Extract the value from the decimal <input> using form & input 'name'
+        var decimalInput = document.forms["binary-convert"]["decimal"].value;
+
+        // Validate the input
+        if (decimalInput == "") {
+          document.getElementById("txtDecimal").style.color = "red";
+          return;
+        }
+
+        // Run the conversion
+        var asBinary = convertToBinary(decimalInput);
+        var txtBinary = document.getElementById("binary-output");
+        txtBinary.innerHTML = asBinary;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Form Demo</h1>
+      <a href="/">Back Home</a>
+      <form name="binary-convert">
+        <div class="form-group">
+          <label for="txtDecimal">Decimal Number</label>
+          <input
+            class="form-control"
+            id="txtDecimal"
+            name="decimal"
+            type="number"
+            value="45"
+          />
+        </div>
+        <button onclick="convertDecimalToBinary()" type="button">
+          Convert
+        </button>
+      </form>
+
+      <p id="binary-output"></p>
+
+      <p>
+        The same thing using vanilla styling is
+        <a href="form-demo.html">here</a>.
+      </p>
+    </div>
+  </body>
+</html>

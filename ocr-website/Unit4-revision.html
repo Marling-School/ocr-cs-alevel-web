@@ -1,0 +1,243 @@
+<html>
+  <head>
+    <title>OCR A Level - Unit 4: Networks</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>AS Level Computing - Unit 4: Networks</h1>
+      <a href="/">Back Home</a>
+      <h2>Structure of Internet</h2>
+      <h3>WAN vs LAN</h3>
+      <ul>
+        <li>WAN is over larger geographical area</li>
+        <li>WANs use 3rd party equipment.</li>
+      </ul>
+      <h3>Components of a URL</h3>
+      <ul>
+        <li>Protocol – Examples are http:// or https://</li>
+        <li>Domain name – Examples are theimportanceofhomework.co.uk</li>
+        <ul>
+          <li>Top Level Domain (TLD) is “.uk”</li>
+        </ul>
+        <li>/homework/sheet5.html is the resource required from the server</li>
+      </ul>
+      <h3>Domain Name Service</h3>
+      <ul>
+        <li>Associates domain names with IP addresses</li>
+        <li>
+          DNS Servers are hierarchical, root DNS servers responsible for serving
+          the definitive values.
+        </li>
+        <li>
+          Internet Registry – Organisation that controls allocation of domains
+          to IP addresses.
+        </li>
+      </ul>
+      <h3>WWW vs Internet</h3>
+      <ul>
+        <li>Internet describes connections between computers</li>
+        <li>Internet covers specific protocols (TCP/IP)</li>
+        <li>
+          WWW refers to the set of hyperlinked documents, accessed using the
+          HTTP/HTTPS protocols over the Internet
+        </li>
+      </ul>
+      <h3>Topologies, Bus Vs Star</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Bus</th>
+            <th>Star</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Expense</td>
+            <td>Cheap to setup</td>
+            <td>Expense of cable per device</td>
+          </tr>
+          <tr>
+            <td>Security</td>
+            <td>Poor</td>
+            <td>Good if switch used</td>
+          </tr>
+          <tr>
+            <td>Scalability</td>
+            <td>Limited cable length</td>
+            <td>Can be hierarchical</td>
+          </tr>
+          <tr>
+            <td>Performance</td>
+            <td>Collisions under heavy use</td>
+            <td>Good</td>
+          </tr>
+          <tr>
+            <td>Single Point of Failure</td>
+            <td>Backbone cable</td>
+            <td>Central device</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Wireless Networks</h3>
+      <ul>
+        <li>NIC – Network Interface Card</li>
+        <li>WAP – Wireless Access Point</li>
+      </ul>
+
+      <h2>Internet Communication</h2>
+      <ul>
+        <li>
+          Circuit Switching – Creating a channel between two endpoints that
+          endures during transaction (phone call)
+        </li>
+        <li>
+          Packet Switching – Data is broken into small pieces and sent via many
+          different routes, reassembled upon reception.
+        </li>
+        <li>
+          Protocols – A set of rules for data communication, they must be
+          standardised across devices for communications to work.
+        </li>
+      </ul>
+      <h3>Layers</h3>
+      <h4>Application Layer</h4>
+      Defines the set of standards used to communicate across the internet.
+      Examples:
+      <ul>
+        <li>HTTP/HTTPS – Web Browsing, S = secure = encryption</li>
+        <li>Email</li>
+        <ul>
+          <li>SMTP – Simple Mail Transfer Protocol – sending emails</li>
+          <li>POP3 – Downloading emails, deleted from server</li>
+          <li>IMAP – Reading emails, persisted on the server</li>
+        </ul>
+        <li>FTP – File transfer Protocol</li>
+        <li>SSH – Secure Shell</li>
+      </ul>
+      <h4>Transport Layer</h4>
+      <p>
+        Splits data into packets, numbers them sequentially. Adds a port number
+        to identity the destination service. TCP/IP – Transmission Control
+        Protocol
+      </p>
+
+      <h4>Internet Layer</h4>
+      Give packets the address of the source and destination
+      <ul>
+        <li>
+          IPv4 – 32-bit number, 4 decimal numbers from 0-255 separated by ‘.’
+        </li>
+        <li>
+          IPv6 – 128-bit number, 8 hexadecimal numbers from 0000 - FFFF,
+          separated by ‘:’
+        </li>
+      </ul>
+      Routing tables used to instruct the next hop as packet travels across the
+      internet.
+
+      <h4>Link Layer</h4>
+      <p>
+        Operates the physical connection between any given set of two devices.
+      </p>
+      <p>
+        Every device has a MAC address – 6 hexadecimal numbers from 00 – FF,
+        separated by ‘:’ Devices
+      </p>
+      <ul>
+        <li>
+          Switch – Can route packets within a private IP network, based on the
+          MAC address
+        </li>
+        <li>
+          Router – Can route packets between distinct IP networks (for example
+          between a private LAN and the public internet)
+        </li>
+        <li>
+          Gateway – Can route packets between networks that use distinct
+          protocol stacks (for example between the mobile phone network and the
+          internet).
+        </li>
+      </ul>
+
+      <h2>Network Threats</h2>
+      <h3>Threats</h3>
+      <ul>
+        <li>Malware – Malicious Software</li>
+        <ul>
+          <li>
+            Viruses – Attach to host files/programs and propagate when executed
+            opened
+          </li>
+          <li>Worm – Standalone program that can run and propagate itself</li>
+          <li>
+            Trojan Horse – Malware hidden inside an apparently desirable
+            payload, such as a free game/free software (pirated software is a
+            haven for these)
+          </li>
+        </ul>
+        <li>
+          Phishing – Sending emails/text messages with links to malicious sites
+          to either
+        </li>
+
+        <ul>
+          <li>Request further private details from duped users</li>
+          <li>Run malicious code in the rouge website once visited</li>
+        </ul>
+      </ul>
+      <h3>Protection & Detection</h3>
+      <ul>
+        <li>Code Quality</li>
+        <ul>
+          <li>Guarding against buffer overflow attack</li>
+          <li>Guarding against SQL injection</li>
+        </ul>
+        <li>System Access</li>
+        <ul>
+          <li>Strong passwords, password policy</li>
+          <li>Two factor Auth</li>
+          <li>User Access Rights</li>
+        </ul>
+        <li>Encryption</li>
+        <li>Firewall</li>
+        <ul>
+          <li>
+            Software that filters packets based on port numbers/IP addresses
+          </li>
+          <li>Packet filtering based on content</li>
+        </ul>
+        <li>Proxy Server</li>
+        <ul>
+          <li>
+            A server within a large enterprise that makes requests on users
+            behalf
+          </li>
+          <li>Allows for site filtering (school uses one of these)</li>
+          <li>Can provide anonymous serving (to some degree)</li>
+          <li>Logs user access</li>
+          <li>Provides caching, out of date cache = stale</li>
+        </ul>
+        <li>Monitoring</li>
+        <ul>
+          <li>Packet sniffers</li>
+          <li>User Access logs, who, what, where, when & why?</li>
+        </ul>
+        <li>Anti-virus & Anti-malware software</li>
+        <ul>
+          <li>
+            Using up-to date signatures of known malware to scan all incoming
+            files/visited sites
+          </li>
+        </ul>
+      </ul>
+    </div>
+  </body>
+</html>

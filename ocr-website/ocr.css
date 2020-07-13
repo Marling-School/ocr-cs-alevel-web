@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: darkblue;
+}
+
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: x-large;
+}
+h3 {
+  font-size: large;
+}
+
+#main {
+  background-color: lightblue;
+  width: 600px;
+  /* 
+    Whilst margin and padding are beyond scope of A Level, they are quite useful
+  */
+  margin-left: 18rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.code {
+  font-family: "Courier New", Courier, monospace;
+  color: darkblue;
+}
+
+/*
+    This is an otherwise empty <div> that is used to create space
+*/
+.spacer {
+  width: 100%;
+  height: 30px;
+}
+
+#first {
+  border-color: blue;
+  border-width: 3px;
+  border-style: solid;
+  /*
+  Put some room between the border and the content
+  */
+  padding: 0.5rem;
+}
+
+#second {
+  border-color: lime;
+  border-width: 3px;
+  border-style: solid;
+  /*
+  Put some room between the border and the content
+  */
+  padding: 0.5rem;
+}
+
+#third {
+  border-color: #ff44aa;
+  border-width: 3px;
+  border-style: solid;
+  /*
+  Put some room between the border and the content
+  */
+  padding: 0.5rem;
+}
+
+.star-wars {
+  background-color: black;
+  color: gold;
+  padding: 1.5rem;
+}
+
+.form-control {
+  padding: 0.5rem;
+}
