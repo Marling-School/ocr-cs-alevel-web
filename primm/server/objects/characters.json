@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Homer Simpson",
+    "age": 39
+  },
+  {
+    "name": "Apu Nahasapeemapetilon",
+    "age": 42
+  },
+  {
+    "name": "Chief Clancy Wiggum",
+    "age": 45
+  },
+  {
+    "name": "Marge Simpson",
+    "age": 38
+  },
+  {
+    "name": "Lisa Simpson",
+    "age": 8
+  },
+  {
+    "name": "Moe Sizlak",
+    "age": 51
+  },
+  {
+    "name": "Bart Simpson",
+    "age": 10
+  },
+  {
+    "name": "Maggie Simpson",
+    "age": 2
+  }
+]
