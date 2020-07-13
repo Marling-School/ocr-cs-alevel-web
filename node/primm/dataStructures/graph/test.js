@@ -7,9 +7,6 @@ test("Creating a Weighted Graph", () => {
   graph.addLink("A", "D", false, 4.0);
   graph.addLink("D", "A", false, 2.0);
 
-  //   console.log("Testing on the following graph");
-  //   console.log(graph.toString());
-
   let ad = graph.getLinkWeight("A", "D");
   expect(ad).toBe(4.0);
 
