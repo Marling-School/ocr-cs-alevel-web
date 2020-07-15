@@ -17,18 +17,24 @@ function mergeSortRecurse(inputList, comparator, leftPointer, rightPointer) {
 
   // Merge the two halves into a single sorted list
   let outputList = [];
-  while (firstHalf.length > 0 && secondHalf.length > 0) {
+  let firstPtr = 0;
+  let secondPtr = 0;
+  while (firstPtr < firstHalf.length && secondPtr < secondHalf.length) {
     // Comparator returns -1 if the first item is larger than first
-    if (comparator(firstHalf[0], secondHalf[0]) < 0) {
-      outputList.push(secondHalf.splice(0, 1)[0]);
+    if (comparator(firstHalf[firstPtr], secondHalf[secondPtr]) < 0) {
+      outputList.push(secondHalf[secondPtr]);
+      secondPtr += 1;
     } else {
-      outputList.push(firstHalf.splice(0, 1)[0]);
+      outputList.push(firstHalf[firstPtr]);
+      firstPtr += 1;
     }
   }
 
   // Push any stragglers from whichever list has items remaining
-  firstHalf.forEach((i) => outputList.push(i));
-  secondHalf.forEach((i) => outputList.push(i));
+  firstHalf.filter((_, i) => i >= firstPtr).forEach((i) => outputList.push(i));
+  secondHalf
+    .filter((_, i) => i >= secondPtr)
+    .forEach((i) => outputList.push(i));
 
   return outputList;
 }
