@@ -4,12 +4,7 @@
 
     And converted from pseudo code to JavaScript.
 */
-
-function swap(arr, from, to) {
-  let swap = arr[from];
-  arr[from] = arr[to];
-  arr[to] = swap;
-}
+const { swap } = require("./common");
 
 /* This function takes last element as pivot, places
    the pivot element at its correct position in sorted

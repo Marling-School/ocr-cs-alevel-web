@@ -1,3 +1,5 @@
+const { swap } = require("./common");
+
 function insertionSort(inputList, comparator) {
   if (inputList.length < 2) {
     return inputList;
@@ -18,9 +20,7 @@ function insertionSort(inputList, comparator) {
       // The comparator returns -1 if the first item is 'greater than' the second one
       if (comparison < 0) {
         // Temporary variable to prevent overwrites
-        let swap = outputList[lower];
-        outputList[lower] = outputList[upper];
-        outputList[upper] = swap;
+        swap(outputList, lower, upper);
       } else {
         itemPlace = upper;
         break;

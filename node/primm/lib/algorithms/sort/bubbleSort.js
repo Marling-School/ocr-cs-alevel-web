@@ -1,3 +1,5 @@
+const { swap } = require("./common");
+
 function bubbleSort(inputList, comparator) {
   let outputList = [...inputList];
 
@@ -5,9 +7,7 @@ function bubbleSort(inputList, comparator) {
     let anySwapsMade = false;
     for (let current = 0; current < top; current++) {
       if (comparator(outputList[current], outputList[current + 1]) < 0) {
-        let swap = outputList[current];
-        outputList[current] = outputList[current + 1];
-        outputList[current + 1] = swap;
+        swap(outputList, current, current + 1);
         anySwapsMade = true;
       }
     }
