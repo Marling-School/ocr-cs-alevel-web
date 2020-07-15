@@ -41,6 +41,14 @@ class Graph {
   }
 
   /**
+   * Access the links from a specific vertex
+   * @param {string} from The from vertex
+   */
+  getRelated(from) {
+    return this.adjacencyList[from];
+  }
+
+  /**
    * This function will look for a link between the two nodes (in that specific direction)
    * It will return the weight of the link between the two.
    * If there is no link, it will return undefined.

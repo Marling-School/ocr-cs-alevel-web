@@ -1,5 +1,5 @@
 class BinaryTree {
-  constructor(isToLeft, value) {
+  constructor(value, isToLeft = (a, b) => a < b) {
     this.isToLeft = isToLeft;
     this.value = value;
     this.leftBranch = null;
@@ -31,18 +31,16 @@ class BinaryTree {
       if (!!this.leftBranch) {
         this.leftBranch.add(item);
       } else {
-        this.leftBranch = new BinaryTree(this.isToLeft, item);
+        this.leftBranch = new BinaryTree(item, this.isToLeft);
       }
     } else {
       if (!!this.rightBranch) {
         this.rightBranch.add(item);
       } else {
-        this.rightBranch = new BinaryTree(this.isToLeft, item);
+        this.rightBranch = new BinaryTree(item, this.isToLeft);
       }
     }
   }
 }
 
-module.exports = {
-  BinaryTree,
-};
+module.exports = BinaryTree;

@@ -19,8 +19,6 @@ test("Linked List", () => {
   expect(at3).toBe("Kate");
   expect(at4).toBe("Kirsten");
 
-  console.log("Testing Remove Linked List ", myList.toString());
-
   remove2 = myList.remove(2);
   expect(remove2).toBe(true);
   at2_again = myList.get(2);

@@ -1,5 +1,37 @@
 const { CircularQueue } = require("./CircularQueue");
 const { PriorityQueue } = require("./PriorityQueue");
+const Queue = require("./Queue");
+
+test("Queue", () => {
+  let myQueue = new Queue();
+  myQueue.enqueue(5);
+  myQueue.enqueue(7);
+  myQueue.enqueue(10);
+  let a = myQueue.dequeue();
+  myQueue.enqueue(13);
+  myQueue.enqueue(54);
+  let b = myQueue.dequeue();
+  myQueue.enqueue(2);
+  let c = myQueue.dequeue();
+  myQueue.enqueue(6);
+  let d = myQueue.dequeue();
+  myQueue.enqueue(19);
+  let e = myQueue.dequeue();
+  myQueue.enqueue(27);
+  myQueue.enqueue(28);
+  let f = myQueue.dequeue();
+  let g = myQueue.dequeue();
+  let h = myQueue.dequeue();
+
+  expect(a).toBe(5);
+  expect(b).toBe(7);
+  expect(c).toBe(10);
+  expect(d).toBe(13);
+  expect(e).toBe(54);
+  expect(f).toBe(2);
+  expect(g).toBe(6);
+  expect(h).toBe(19);
+});
 
 test("Priority Queue", () => {
   let myQueue = new PriorityQueue();
