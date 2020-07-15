@@ -31,24 +31,14 @@ function mergeSortRecurse(inputList, comparator, leftPointer, rightPointer) {
   secondHalf.forEach((i) => outputList.push(i));
 
   return outputList;
-
-  // # Merge the two halves into a single sorted list
-  // output_list: List[Sortable] = []
-  // while (len(first_half) > 0) and (len(second_half) > 0):
-  //     # Comparator returns -1 if the first item is 'larger than' the first
-  //     comparison: int = comparator(first_half[0], second_half[0])
-  //     if comparison < 0:
-  //         output_list.append(second_half.pop(0))
-  //     else:
-  //         output_list.append(first_half.pop(0))
 }
 
 function mergeSort(inputList, comparator) {
-  if (inputList.length === 0) {
+  if (inputList.length < 2) {
     return inputList;
   }
 
-  return mergeSortRecurse(inputList, comparator);
+  return mergeSortRecurse(inputList, comparator, 0, inputList.length - 1);
 }
 
 module.exports = mergeSort;
