@@ -20,7 +20,7 @@ test("Linked List", () => {
   expect(at4).toBe("Kirsten");
 
   remove2 = myList.remove(2);
-  expect(remove2).toBe(true);
+  expect(remove2).toBeTruthy();
   at2_again = myList.get(2);
   expect(at2_again).toBe("Kate");
 });

@@ -13,6 +13,6 @@ test("Binary Tree - Contains", () => {
   let positive = myTree.contains("C");
   let negative = myTree.contains("X");
 
-  expect(positive).toBe(true);
-  expect(negative).toBe(false);
+  expect(positive).toBeTruthy();
+  expect(negative).toBeFalsy();
 });
