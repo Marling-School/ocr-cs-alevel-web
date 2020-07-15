@@ -30,6 +30,4 @@ function breadthFirstSearch(graph, startVertex) {
   return items;
 }
 
-module.exports = {
-  breadthFirstSearch,
-};
+module.exports = breadthFirstSearch;

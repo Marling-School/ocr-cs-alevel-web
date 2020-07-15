@@ -1,9 +1,7 @@
 const BinaryTree = require("../../dataStructures/binaryTree/BinaryTree");
-const {
-  traverseInOrder,
-  traversePostOrder,
-  traversePreOrder,
-} = require("./BinaryTreeTraversal");
+const traverseInOrder = require("./traverseInOrder");
+const traversePostOrder = require("./traversePostOrder");
+const traversePreOrder = require("./traversePreOrder");
 
 test("Binary Tree - Traversal", () => {
   let myTree = new BinaryTree();

@@ -1,5 +1,5 @@
-const { CircularQueue } = require("./CircularQueue");
-const { PriorityQueue } = require("./PriorityQueue");
+const CircularQueue = require("./CircularQueue");
+const PriorityQueue = require("./PriorityQueue");
 const Queue = require("./Queue");
 
 test("Queue", () => {

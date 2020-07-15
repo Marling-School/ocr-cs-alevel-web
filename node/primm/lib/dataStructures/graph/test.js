@@ -1,4 +1,4 @@
-const { Graph } = require("./graph");
+const Graph = require("./graph");
 
 test("Creating a Weighted Graph", () => {
   let graph = new Graph();

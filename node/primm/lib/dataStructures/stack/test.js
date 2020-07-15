@@ -1,4 +1,4 @@
-const { Stack } = require("./Stack");
+const Stack = require("./Stack");
 
 test("Stacking Numbers", () => {
   let myStack = new Stack(5);
