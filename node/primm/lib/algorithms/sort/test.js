@@ -2,6 +2,7 @@ const bubbleSort = require("./bubbleSort");
 const mergeSort = require("./mergeSort");
 const insertionSort = require("./insertionSort");
 const quickSort = require("./quickSort");
+const { arithmeticComparator, generateRandomNumbers } = require("./common");
 
 // Associate each sort algorithm with a name so they can all be tested in same function
 let algorithms = [
@@ -18,12 +19,10 @@ let algorithms = [
 algorithms.forEach(({ name, sort }) => {
   test(`Sort: ${name}`, () => {
     // Generate a list of random numbers
-    let inputList = Array(20)
-      .fill(null)
-      .map((i) => Math.floor(100 * Math.random()));
+    let inputList = generateRandomNumbers(0, 100, 20);
 
     // Execute the sort
-    let outputList = sort(inputList, (a, b) => b - a);
+    let outputList = sort(inputList, arithmeticComparator);
 
     // Check all the input numbers are in there somewhere
     expect(outputList.length).toBe(inputList.length);
