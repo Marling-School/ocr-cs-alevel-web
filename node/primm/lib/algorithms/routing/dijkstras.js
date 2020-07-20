@@ -19,9 +19,10 @@ function getPath(shortestPathTree, toNode) {
  *
  * @param {Graph} graph
  * @param {string} fromNode
+ * @param {string | undefined} toNode If we want to 'stop early' and only find the route to one node...specify it
  * @returns Shortest Path Tree { [node] : {distanceFromSource: number, viaNode: string} }
  */
-function dijstraks(graph, fromNode) {
+function dijstraks(graph, fromNode, toNode = undefined) {
   let shortestPathTree = {};
 
   // Build a priority queue, where the nodes are arranged in order of
@@ -54,6 +55,10 @@ function dijstraks(graph, fromNode) {
       distanceFromSource: currentItem.distanceFromSource,
       viaNode: currentItem.viaNode,
     };
+
+    if (!!toNode && currentItem.node === toNode) {
+      break;
+    }
 
     // Get all the links from our current item
     let links = graph

@@ -33,8 +33,8 @@ test("Routing Algorithms Larger Graph", () => {
     .addLink("7", "8", true, 7);
 
   let fromNode = "0";
-  let shortestPathTree = dijstraks(myGraph, fromNode);
-  expect(shortestPathTree).toEqual({
+  let shortestPathTreeAll = dijstraks(myGraph, fromNode);
+  expect(shortestPathTreeAll).toEqual({
     "0": { viaNode: undefined, distanceFromSource: 0 },
     "1": { distanceFromSource: 4, viaNode: "0" },
     "2": { distanceFromSource: 12, viaNode: "1" },
@@ -46,12 +46,18 @@ test("Routing Algorithms Larger Graph", () => {
     "8": { distanceFromSource: 14, viaNode: "2" },
   });
 
-  let pathTo4 = getPath(shortestPathTree, "4");
+  let pathTo4 = getPath(shortestPathTreeAll, "4");
   expect(pathTo4).toEqual(["0", "7", "6", "5", "4"]);
 
-  let pathTo3 = getPath(shortestPathTree, "3");
+  let pathTo3 = getPath(shortestPathTreeAll, "3");
   expect(pathTo3).toEqual(["0", "1", "2", "3"]);
 
-  let pathTo8 = getPath(shortestPathTree, "8");
+  let pathTo8 = getPath(shortestPathTreeAll, "8");
   expect(pathTo8).toEqual(["0", "1", "2", "8"]);
+
+  // Do the same thing again, but only find the route to one node
+  // It should come up with the same answer, but will make no attempt to route 'every node'
+  let shortestPathTree4only = dijstraks(myGraph, fromNode);
+  let pathTo4only = getPath(shortestPathTree4only, "4");
+  expect(pathTo4only).toEqual(["0", "7", "6", "5", "4"]);
 });
