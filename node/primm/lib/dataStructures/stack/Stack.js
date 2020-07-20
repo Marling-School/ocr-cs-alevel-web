@@ -7,6 +7,10 @@ class Stack {
     this.items = new LinkedList();
   }
 
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
   getItems() {
     return this.items;
   }
@@ -17,17 +21,18 @@ class Stack {
   }
 
   pop() {
-    let item = this.peek();
-    this.items.remove(0);
-    return item;
+    if (this.isEmpty()) {
+      throw new Error("Stack Underflow");
+    }
+    return this.items.remove(0);
   }
 
   peek() {
-    if (this.items.isEmpty()) {
+    if (this.isEmpty()) {
       throw new Error("Stack Underflow");
     }
 
-    return this.items[0];
+    return this.items.get(0);
   }
 }
 

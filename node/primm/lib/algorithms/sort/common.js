@@ -18,6 +18,10 @@ function arithmeticComparator(a, b) {
   return a - b;
 }
 
+function stringComparator(a, b) {
+  return a.localeCompare(b);
+}
+
 /**
  * Generate a list of random numbers in array of given length
  * @param {number} length
@@ -32,5 +36,6 @@ function generateRandomNumbers(from, to, length) {
 module.exports = {
   swap,
   arithmeticComparator,
+  stringComparator,
   generateRandomNumbers,
 };

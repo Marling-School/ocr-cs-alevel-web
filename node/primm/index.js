@@ -1,15 +1,7 @@
 console.log("This is just the entry point");
 
-let a = Infinity;
-let b = 5;
+let a = "A";
+let b = "B";
+let c = a.localeCompare(b);
 
-let c = {
-  node: "B",
-  distance: Infinity,
-};
-
-let aMoreThanB = a > b;
-
-console.log(`A ${a} More Than B ${b}? ${aMoreThanB}`);
-
-console.log("C", c);
+console.log("Stuff", { a, b, c });

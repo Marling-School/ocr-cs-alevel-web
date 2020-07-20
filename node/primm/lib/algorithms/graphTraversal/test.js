@@ -3,19 +3,16 @@ const depthFirstSearch = require("./depthFirstSearch");
 const Graph = require("../../dataStructures/graph/Graph");
 
 function createTestGraph() {
-  let myGraph = new Graph();
-
-  myGraph.addLink("S", "A");
-  myGraph.addLink("S", "B");
-  myGraph.addLink("S", "C");
-  myGraph.addLink("A", "D");
-  myGraph.addLink("D", "G");
-  myGraph.addLink("B", "E");
-  myGraph.addLink("E", "G");
-  myGraph.addLink("C", "F");
-  myGraph.addLink("F", "G");
-
-  return myGraph;
+  return new Graph()
+    .addLink("S", "A")
+    .addLink("S", "B")
+    .addLink("S", "C")
+    .addLink("A", "D")
+    .addLink("D", "G")
+    .addLink("B", "E")
+    .addLink("E", "G")
+    .addLink("C", "F")
+    .addLink("F", "G");
 }
 
 test("Graph - Breadth First Search", () => {
