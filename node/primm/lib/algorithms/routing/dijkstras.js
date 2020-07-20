@@ -1,17 +1,34 @@
 const PriorityQueue = require("../../dataStructures/queue/PriorityQueue");
-const Stack = require("../../dataStructures/stack/Stack");
 
-function getPath(shortestPathTree, toNode) {
-  // Build the stack of nodes between fromNode -> toNode
-  // We are working backwards, so by using a stack, reading the items back off will reverse the order
-  let node = toNode;
-  let path = new Stack();
+/**
+ * Calls the walkPath generator function and puts all the nodes into an array, returns the array.
+ *
+ * @param {object[key=node, value={cost: number, viaNode: string}]} shortestPathTree
+ * @param {string} destinationNode
+ * @returns An array containing the path (walking backwards)
+ */
+function getPath(shortestPathTree, destinationNode) {
+  let path = [];
+  for (p of walkPath(shortestPathTree, destinationNode)) {
+    path.push(p);
+  }
+  return path;
+}
+
+/**
+ * Given a shortestPathTree taken from the dijkstra function below,
+ * this walks from one node to another through the shortest path identified
+ *
+ * @param {object[key=node, value={cost: number, viaNode: string}]} shortestPathTree
+ * @param {string} viaNode The start point of the journey
+ * @param {string} destinationNode The end point of the journey
+ */
+function* walkPath(shortestPathTree, destinationNode) {
+  let node = destinationNode;
   while (!!node) {
-    path.push(node);
+    yield node;
     node = shortestPathTree[node].viaNode;
   }
-
-  return [...path.getItems()]; // iterates through the stack, reading back the items in reverse order
 }
 
 /**
@@ -29,17 +46,17 @@ let defaultOptionalArgs = {
  * https://stackoverflow.com/questions/23906530/dijkstras-end-condition
  *
  * @param {Graph} graph The graph that contains all the nodes and links
- * @param {string} fromNode The node we are travelling from
+ * @param {string} sourceNode The node we are travelling from
  * @param {function} compare A function that accepts two nodes and compares them
  * @param {string | undefined} optionalArguments // Optional arguments, see above for default values
  * @returns Shortest Path Tree { [node] : {cost: number, viaNode: string} }
  */
-function dijstraks(
-  graph,
-  fromNode,
-  compare,
-  { toNode, getHeuristicCost } = defaultOptionalArgs
-) {
+function dijstraks(graph, sourceNode, compare, optionalArgs = {}) {
+  // Expand the optional args, filling in with default values
+  let { destinationNode, getHeuristicCost } = {
+    ...defaultOptionalArgs,
+    ...optionalArgs,
+  };
   let shortestPathTree = {};
 
   // Build a priority queue, where the nodes are arranged in order of
@@ -48,7 +65,7 @@ function dijstraks(
 
   // Add the from node, it doesn't go via anything, and it's distance is zero
   currentDistances.enqueue({
-    node: fromNode,
+    node: sourceNode,
     viaNode: undefined,
     cost: 0,
   });
@@ -56,7 +73,7 @@ function dijstraks(
   // Add all the other nodes, with a distance of Infinity
   graph
     .getAllVertices()
-    .filter((node) => compare(node, fromNode) !== 0)
+    .filter((node) => compare(node, sourceNode) !== 0)
     .map((node) => ({ node, viaNode: undefined, cost: Infinity }))
     .forEach((n) => currentDistances.enqueue(n));
 
@@ -71,7 +88,7 @@ function dijstraks(
       viaNode: currentItem.viaNode,
     };
 
-    if (!!toNode && compare(currentItem.node, toNode) === 0) {
+    if (!!destinationNode && compare(currentItem.node, destinationNode) === 0) {
       break;
     }
 
@@ -120,4 +137,5 @@ function dijstraks(
 module.exports = {
   dijstraks,
   getPath,
+  walkPath,
 };
