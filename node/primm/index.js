@@ -1,7 +1,9 @@
-console.log("This is just the entry point");
+const express = require("express");
+const app = express();
+const port = 3000;
 
-let a = "A";
-let b = "B";
-let c = a.localeCompare(b);
+app.get("/", (req, res) => res.send("Hello World!"));
 
-console.log("Stuff", { a, b, c });
+app.listen(port, () =>
+  console.log(`Example app listening at http://localhost:${port}`)
+);

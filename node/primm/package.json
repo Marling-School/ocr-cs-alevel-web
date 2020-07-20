@@ -1,5 +1,5 @@
 {
-  "name": "VidLearn_JavaScript",
+  "name": "a-level-computer-science-ocr",
   "version": "1.0.0",
   "description": "A dumping ground for any examples I write in JavaScript in support of my SKE",
   "main": "index.js",
@@ -12,5 +12,8 @@
   },
   "devDependencies": {
     "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
