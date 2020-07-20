@@ -19,7 +19,7 @@ function partition(arr, comparator, low, high) {
 
   for (let j = low; j <= high - 1; j++) {
     // If current element is smaller than the pivot
-    if (comparator(arr[j], pivot) > 0) {
+    if (comparator(arr[j], pivot) < 0) {
       i++; // increment index of smaller element
       swap(arr, i, j);
     }

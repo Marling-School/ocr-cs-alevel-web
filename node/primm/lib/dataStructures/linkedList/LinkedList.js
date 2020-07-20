@@ -1,7 +1,32 @@
+class LinkedListIterator {
+  constructor(item) {
+    this.item = item;
+  }
+
+  next() {
+    console.log("Called next");
+
+    let item = this.item;
+    this.item = item && item.nextItem;
+
+    return {
+      value: item,
+      done: item && item.nextItem,
+    };
+  }
+}
+
 class LinkedItem {
   constructor(value, nextItem) {
     this.value = value;
     this.nextItem = nextItem;
+  }
+
+  next() {
+    return {
+      value: this.value,
+      done: this.nextItem !== undefined,
+    };
   }
 
   setNextItem(item) {
@@ -20,19 +45,25 @@ class LinkedItem {
 class LinkedList {
   constructor() {
     this.startItem = undefined;
+    this.length = 0;
   }
 
-  iterator() {
-    return new LinkedListIterator(this.startItem);
+  *[Symbol.iterator]() {
+    let cItem = this.startItem;
+    while (!!cItem) {
+      yield cItem.getValue();
+      cItem = cItem.getNextItem();
+    }
   }
 
   insert(index, item) {
+    let inserted = false;
     let newItem = new LinkedItem(item);
 
     if (index === 0) {
       newItem.setNextItem(this.startItem);
       this.startItem = newItem;
-      return true;
+      inserted = true;
     } else {
       let tIndex = 1;
       let currentItem = this.startItem;
@@ -40,13 +71,18 @@ class LinkedList {
         if (tIndex === index) {
           newItem.setNextItem(currentItem.getNextItem());
           currentItem.setNextItem(newItem);
-          return true;
+          inserted = true;
+          break;
         }
 
         tIndex += 1;
         currentItem = currentItem.getNextItem();
       }
     }
+
+    if (inserted) this.length += 1;
+
+    return inserted;
   }
 
   get(index) {
@@ -77,13 +113,17 @@ class LinkedList {
     } else {
       this.startItem = newItem;
     }
+
+    this.length += 1;
   }
 
   remove(index) {
+    let removed = false;
+
     if (index === 0) {
       if (!!this.startItem) {
         this.startItem = this.startItem.getNextItem();
-        return true;
+        removed = true;
       }
     } else {
       let tIndex = 1;
@@ -93,7 +133,8 @@ class LinkedList {
           let toRemove = currentItem.getNextItem();
           if (!!toRemove) {
             currentItem.setNextItem(toRemove.getNextItem());
-            return true;
+            removed = true;
+            break;
           }
         }
         currentItem = currentItem.getNextItem();
@@ -101,17 +142,20 @@ class LinkedList {
       }
     }
 
-    return false;
+    if (removed) {
+      this.length -= 1;
+    }
+
+    return removed;
   }
 
   toString() {
-    let asStr = "";
-    let cItem = this.startItem;
-    while (!!cItem) {
-      asStr += ` ${cItem.getValue()}`;
-      cItem = cItem.getNextItem();
+    // return [this].reduce((acc, curr) => (acc += ` ${curr.getValue()}`), "");
+    let arr = [];
+    for (let i of this) {
+      arr.push(i);
     }
-    return asStr;
+    return arr.join(" ");
   }
 }
 

@@ -1,31 +1,37 @@
+const LinkedList = require("../linkedList/LinkedList");
+
 class PriorityQueue {
-  constructor() {
-    this.items = [];
+  /**
+   * Constructor for Priority Queue.
+   * @param {function} getPriority A function that accepts an item and returns a number to represent priority
+   */
+  constructor(getPriority) {
+    this.getPriority = getPriority;
+    this.items = new LinkedList();
   }
 
   toString() {
-    return JSON.stringify(this.items);
+    return this.items.toString();
   }
 
   isEmpty() {
     return this.items.length === 0;
   }
 
-  enqueue(newItem, newPriority) {
-    let newPrioritisedObject = {
-      item: newItem,
-      priority: newPriority,
-    };
+  enqueue(newItem) {
+    let newPriority = this.getPriority(newItem);
 
     for (let index = 0; index < this.items.length; index++) {
       let { priority } = this.items[index];
       if (newPriority > priority) {
-        this.items.splice(index, 0, newPrioritisedObject);
+        // Insert item at this point and return
+        this.items.splice(index, 0, newItem);
         return;
       }
     }
 
-    this.items.push(newPrioritisedObject);
+    // Just push onto the end
+    this.items.push(newItem);
   }
 
   dequeue() {

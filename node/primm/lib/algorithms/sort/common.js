@@ -4,8 +4,18 @@ function swap(arr, from, to) {
   arr[to] = swap;
 }
 
+/**
+ * Comparator function that uses simple arithmetic comparison.
+ * based on https://www.w3schools.com/js/js_array_sort.asp
+ * If the result is negative a is sorted before b.
+ * If the result is positive b is sorted before a.
+ * If the result is 0 no changes are done with the sort order of the two values.
+ *
+ * @param {number | string} a First item
+ * @param {number | string} b Second item
+ */
 function arithmeticComparator(a, b) {
-  return b - a;
+  return a - b;
 }
 
 /**

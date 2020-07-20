@@ -34,35 +34,35 @@ test("Queue", () => {
 });
 
 test("Priority Queue", () => {
-  let myQueue = new PriorityQueue();
+  let myQueue = new PriorityQueue((o) => o.priority);
 
-  myQueue.enqueue("Indigo", 10);
-  myQueue.enqueue("Joe", 4);
-  myQueue.enqueue("Kate", 7);
+  myQueue.enqueue({ name: "Indigo", priority: 10 });
+  myQueue.enqueue({ name: "Joe", priority: 4 });
+  myQueue.enqueue({ name: "Kate", priority: 7 });
   let a = myQueue.dequeue();
-  myQueue.enqueue("Tom", 9);
-  myQueue.enqueue("Kirsten", 3);
+  myQueue.enqueue({ name: "Tom", priority: 9 });
+  myQueue.enqueue({ name: "Kirsten", priority: 3 });
   let b = myQueue.dequeue();
-  myQueue.enqueue("Nina", 4);
+  myQueue.enqueue({ name: "Nina", priority: 4 });
   let c = myQueue.dequeue();
-  myQueue.enqueue("Gaz", 5);
+  myQueue.enqueue({ name: "Gaz", priority: 5 });
   let d = myQueue.dequeue();
-  myQueue.enqueue("Steve", 1);
+  myQueue.enqueue({ name: "Steve", priority: 1 });
   let e = myQueue.dequeue();
-  myQueue.enqueue("Louise", 8);
-  myQueue.enqueue("Chris", 7);
+  myQueue.enqueue({ name: "Louise", priority: 8 });
+  myQueue.enqueue({ name: "Chris", priority: 7 });
   let f = myQueue.dequeue();
   let g = myQueue.dequeue();
   let h = myQueue.dequeue();
 
-  expect(a).toEqual({ item: "Indigo", priority: 10 });
-  expect(b).toEqual({ item: "Tom", priority: 9 });
-  expect(c).toEqual({ item: "Kate", priority: 7 });
-  expect(d).toEqual({ item: "Gaz", priority: 5 });
-  expect(e).toEqual({ item: "Joe", priority: 4 });
-  expect(f).toEqual({ item: "Louise", priority: 8 });
-  expect(g).toEqual({ item: "Chris", priority: 7 });
-  expect(h).toEqual({ item: "Nina", priority: 4 });
+  expect(a).toEqual({ name: "Indigo", priority: 10 });
+  expect(b).toEqual({ name: "Tom", priority: 9 });
+  expect(c).toEqual({ name: "Kate", priority: 7 });
+  expect(d).toEqual({ name: "Gaz", priority: 5 });
+  expect(e).toEqual({ name: "Joe", priority: 4 });
+  expect(f).toEqual({ name: "Louise", priority: 8 });
+  expect(g).toEqual({ name: "Chris", priority: 7 });
+  expect(h).toEqual({ name: "Nina", priority: 4 });
 });
 
 test("Circular Queue", () => {

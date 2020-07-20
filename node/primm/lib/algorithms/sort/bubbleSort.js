@@ -6,7 +6,7 @@ function bubbleSort(inputList, comparator) {
   for (let top = outputList.length - 1; top > 0; top--) {
     let anySwapsMade = false;
     for (let current = 0; current < top; current++) {
-      if (comparator(outputList[current], outputList[current + 1]) < 0) {
+      if (comparator(outputList[current], outputList[current + 1]) > 0) {
         swap(outputList, current, current + 1);
         anySwapsMade = true;
       }

@@ -18,9 +18,21 @@ test("Linked List", () => {
   expect(at2).toBe("Indigo");
   expect(at3).toBe("Kate");
   expect(at4).toBe("Kirsten");
+  expect(myList.length).toBe(5);
 
   remove2 = myList.remove(2);
   expect(remove2).toBeTruthy();
   at2_again = myList.get(2);
   expect(at2_again).toBe("Kate");
+
+  // Check that iteration works
+  let asArr = [];
+  for (let i of myList) {
+    asArr.push(i);
+  }
+  expect(asArr).toEqual(["Joe", "Tom", "Kate", "Kirsten"]);
+
+  // Check that to string works
+  let asStr = myList.toString();
+  expect(asStr).toBe("Joe Tom Kate Kirsten");
 });

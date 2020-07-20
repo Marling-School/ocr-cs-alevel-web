@@ -17,8 +17,8 @@ function insertionSort(inputList, comparator) {
 
       comparison = comparator(outputList[lower], outputList[upper]);
 
-      // The comparator returns -1 if the first item is 'greater than' the second one
-      if (comparison < 0) {
+      // The comparator returns -ve if the first item is 'greater than' the second one
+      if (comparison > 0) {
         // Temporary variable to prevent overwrites
         swap(outputList, lower, upper);
       } else {

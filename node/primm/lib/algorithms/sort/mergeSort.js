@@ -20,8 +20,8 @@ function mergeSortRecurse(inputList, comparator, leftPointer, rightPointer) {
   let firstPtr = 0;
   let secondPtr = 0;
   while (firstPtr < firstHalf.length && secondPtr < secondHalf.length) {
-    // Comparator returns -1 if the first item is larger than first
-    if (comparator(firstHalf[firstPtr], secondHalf[secondPtr]) < 0) {
+    // Comparator returns +ve if the second item is larger than first
+    if (comparator(firstHalf[firstPtr], secondHalf[secondPtr]) > 0) {
       outputList.push(secondHalf[secondPtr]);
       secondPtr += 1;
     } else {
