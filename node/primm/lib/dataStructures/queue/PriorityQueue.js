@@ -18,6 +18,15 @@ class PriorityQueue {
     return this.items.length === 0;
   }
 
+  /**
+   * Removes
+   * @param {function} matchFunction Returns true for the object being removed
+   * @returns The removed item
+   */
+  removeMatch(matchFunction) {
+    return this.items.removeMatch(matchFunction);
+  }
+
   enqueue(newItem) {
     let newPriority = this.getPriority(newItem);
 

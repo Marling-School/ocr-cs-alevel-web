@@ -82,6 +82,10 @@ class Graph {
     return this.adjacencyList[node];
   }
 
+  getAllVertices() {
+    return Object.keys(this.adjacencyList);
+  }
+
   /**
    * Represent the graph as a string, it will use tabs and newlines to space things out.
    */
