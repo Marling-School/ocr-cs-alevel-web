@@ -1,32 +1,7 @@
-class LinkedListIterator {
-  constructor(item) {
-    this.item = item;
-  }
-
-  next() {
-    console.log("Called next");
-
-    let item = this.item;
-    this.item = item && item.nextItem;
-
-    return {
-      value: item,
-      done: item && item.nextItem,
-    };
-  }
-}
-
 class LinkedItem {
   constructor(value, nextItem) {
     this.value = value;
     this.nextItem = nextItem;
-  }
-
-  next() {
-    return {
-      value: this.value,
-      done: this.nextItem !== undefined,
-    };
   }
 
   setNextItem(item) {

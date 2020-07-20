@@ -1,6 +1,27 @@
 const PriorityQueue = require("../../dataStructures/queue/PriorityQueue");
+const Stack = require("../../dataStructures/stack/Stack");
 
-function dijstraks(graph, fromNode, toNode) {
+function getPath(shortestPathTree, toNode) {
+  // Build the stack of nodes between fromNode -> toNode
+  // We are working backwards, so by using a stack, reading the items back off will reverse the order
+  let node = toNode;
+  let path = new Stack();
+  while (!!node) {
+    path.push(node);
+    node = shortestPathTree[node].viaNode;
+  }
+
+  return [...path.getItems()]; // iterates through the stack, reading back the items in reverse order
+}
+
+/**
+ * Executes Dijkstras routing algorithm, returning the shortest path tree for the given source node.
+ *
+ * @param {Graph} graph
+ * @param {string} fromNode
+ * @returns Shortest Path Tree { [node] : {distanceFromSource: number, viaNode: string} }
+ */
+function dijstraks(graph, fromNode) {
   let shortestPathTree = {};
 
   // Build a priority queue, where the nodes are arranged in order of
@@ -46,27 +67,29 @@ function dijstraks(graph, fromNode, toNode) {
       // It will either be replaced as is, or replaced with updated details
       let otherItem = currentDistances.removeMatch((d) => d.node === node);
 
-      if (!!otherItem) {
-        if (distanceFromCurrent === Infinity) {
+      if (distanceFromCurrent === Infinity) {
+        // This is the first time we have 'found' this node, so this is the best known route
+        currentDistances.enqueue({
+          node,
+          distanceFromSource: distanceFromCurrent,
+          viaNode: currentItem.node,
+        });
+      } else {
+        // What is the distance to this other node, from our current node?
+        let newPotentialDistance =
+          currentItem.distanceFromSource + distanceFromCurrent;
+
+        // Have we found a shorter route?
+        if (newPotentialDistance < otherItem.distanceFromSource) {
+          // Replace the node with our new distance and via details
           currentDistances.enqueue({
-            node,
-            distanceFromSource: distanceFromCurrent,
+            node: node,
+            distanceFromSource: newPotentialDistance,
             viaNode: currentItem.node,
           });
         } else {
-          let newPotentialDistance =
-            currentItem.distanceFromSource + distanceFromCurrent;
-
-          if (newPotentialDistance < otherItem.distanceFromSource) {
-            currentDistances.enqueue({
-              node: node,
-              distanceFromSource: newPotentialDistance,
-              viaNode: currentItem.node,
-            });
-          } else {
-            // Just put the current one back
-            currentDistances.enqueue(otherItem);
-          }
+          // Just put the current one back
+          currentDistances.enqueue(otherItem);
         }
       }
     });
@@ -75,4 +98,7 @@ function dijstraks(graph, fromNode, toNode) {
   return shortestPathTree;
 }
 
-module.exports = dijstraks;
+module.exports = {
+  dijstraks,
+  getPath,
+};
