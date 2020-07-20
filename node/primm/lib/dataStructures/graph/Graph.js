@@ -22,6 +22,7 @@ class Graph {
    * @param {string} to The destination node
    * @param {bool} biDirectional If this new link works in both directions
    * @param {number} weight The weighting to attach
+   * @returns this to allow method chaining
    */
   addLink(from, to, biDirectional = true, weight = 1.0) {
     let fromAdjacencyList = this.ensureAdjacencyExists(from);
@@ -38,6 +39,8 @@ class Graph {
         weight,
       });
     }
+
+    return this;
   }
 
   /**

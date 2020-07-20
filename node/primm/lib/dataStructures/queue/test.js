@@ -34,7 +34,7 @@ test("Queue", () => {
 });
 
 test("Priority Queue", () => {
-  let myQueue = new PriorityQueue((o) => o.priority);
+  let myQueue = new PriorityQueue((a, b) => a.priority - b.priority);
 
   myQueue.enqueue({ name: "Indigo", priority: 10 });
   myQueue.enqueue({ name: "Joe", priority: 4 });

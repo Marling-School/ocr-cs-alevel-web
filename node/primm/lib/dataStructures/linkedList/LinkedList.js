@@ -187,7 +187,7 @@ class LinkedList {
     // return [this].reduce((acc, curr) => (acc += ` ${curr.getValue()}`), "");
     let arr = [];
     for (let i of this) {
-      arr.push(i);
+      arr.push(JSON.stringify(i));
     }
     return arr.join(" ");
   }

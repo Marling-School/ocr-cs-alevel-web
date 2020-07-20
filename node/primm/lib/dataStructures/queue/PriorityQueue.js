@@ -5,8 +5,8 @@ class PriorityQueue {
    * Constructor for Priority Queue.
    * @param {function} getPriority A function that accepts an item and returns a number to represent priority
    */
-  constructor(getPriority) {
-    this.getPriority = getPriority;
+  constructor(priorityComparator) {
+    this.priorityComparator = priorityComparator;
     this.items = new LinkedList();
   }
 
@@ -28,11 +28,9 @@ class PriorityQueue {
   }
 
   enqueue(newItem) {
-    let newPriority = this.getPriority(newItem);
-
     let index = 0;
-    for (let { priority } of this.items) {
-      if (newPriority > priority) {
+    for (let item of this.items) {
+      if (this.priorityComparator(newItem, item) > 0) {
         // Insert item at this point and return
         this.items.insert(index, newItem);
         return;
