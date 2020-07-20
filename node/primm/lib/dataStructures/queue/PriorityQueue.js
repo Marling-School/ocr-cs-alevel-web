@@ -21,17 +21,19 @@ class PriorityQueue {
   enqueue(newItem) {
     let newPriority = this.getPriority(newItem);
 
-    for (let index = 0; index < this.items.length; index++) {
-      let { priority } = this.items[index];
+    let index = 0;
+    for (let { priority } of this.items) {
       if (newPriority > priority) {
         // Insert item at this point and return
-        this.items.splice(index, 0, newItem);
+        this.items.insert(index, newItem);
         return;
       }
+
+      index += 1;
     }
 
     // Just push onto the end
-    this.items.push(newItem);
+    this.items.append(newItem);
   }
 
   dequeue() {
@@ -39,7 +41,7 @@ class PriorityQueue {
       throw new Error("Queue Empty");
     }
 
-    return this.items.splice(0, 1)[0];
+    return this.items.remove(0);
   }
 }
 

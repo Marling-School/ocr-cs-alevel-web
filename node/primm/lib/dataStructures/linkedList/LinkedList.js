@@ -125,13 +125,39 @@ class LinkedList {
     this.length += 1;
   }
 
+  /**
+   * Removes
+   * @param {function} matchFunction Returns true for the object being removed
+   * @returns The removed item
+   */
+  removeMatch(matchFunction) {
+    let removed = undefined;
+    let index = 0;
+    let cItem = this.startItem;
+    while (!!cItem) {
+      if (matchFunction(cItem.getValue())) {
+        removed = this.remove(index);
+        break;
+      }
+      cItem = cItem.getNextItem();
+      index += 1;
+    }
+
+    return removed;
+  }
+
+  /**
+   * Remove an item in a specific position
+   * @param {number} index The index of the object to remove
+   * @returns The removed item
+   */
   remove(index) {
-    let removed = false;
+    let removed = undefined;
 
     if (index === 0) {
       if (!!this.startItem) {
+        removed = this.startItem.getValue();
         this.startItem = this.startItem.getNextItem();
-        removed = true;
       }
     } else {
       let tIndex = 1;
@@ -140,8 +166,8 @@ class LinkedList {
         if (tIndex === index) {
           let toRemove = currentItem.getNextItem();
           if (!!toRemove) {
+            removed = toRemove.getValue();
             currentItem.setNextItem(toRemove.getNextItem());
-            removed = true;
             break;
           }
         }

@@ -21,15 +21,20 @@ test("Linked List", () => {
   expect(myList.length).toBe(5);
 
   remove2 = myList.remove(2);
-  expect(remove2).toBeTruthy();
+  expect(remove2).toBe("Indigo");
   at2_again = myList.get(2);
   expect(at2_again).toBe("Kate");
 
+  remove1 = myList.removeMatch((i) => i === "Tom");
+  expect(remove1).toBe("Tom");
+  at2_again = myList.get(2);
+  expect(at2_again).toBe("Kirsten");
+
   // Check that iteration works
   let asArr = myList.toArray();
-  expect(asArr).toEqual(["Joe", "Tom", "Kate", "Kirsten"]);
+  expect(asArr).toEqual(["Joe", "Kate", "Kirsten"]);
 
   // Check that to string works
   let asStr = myList.toString();
-  expect(asStr).toBe("Joe Tom Kate Kirsten");
+  expect(asStr).toBe("Joe Kate Kirsten");
 });
