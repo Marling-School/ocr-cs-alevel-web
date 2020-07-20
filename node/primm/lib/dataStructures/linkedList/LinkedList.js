@@ -56,6 +56,14 @@ class LinkedList {
     }
   }
 
+  toArray() {
+    let arr = [];
+    for (let i of this) {
+      arr.push(i);
+    }
+    return arr;
+  }
+
   insert(index, item) {
     let inserted = false;
     let newItem = new LinkedItem(item);

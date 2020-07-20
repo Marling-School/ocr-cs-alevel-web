@@ -26,10 +26,7 @@ test("Linked List", () => {
   expect(at2_again).toBe("Kate");
 
   // Check that iteration works
-  let asArr = [];
-  for (let i of myList) {
-    asArr.push(i);
-  }
+  let asArr = myList.toArray();
   expect(asArr).toEqual(["Joe", "Tom", "Kate", "Kirsten"]);
 
   // Check that to string works
