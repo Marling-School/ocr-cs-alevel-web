@@ -1,1 +1,0 @@
-function astar(graph, from) {}

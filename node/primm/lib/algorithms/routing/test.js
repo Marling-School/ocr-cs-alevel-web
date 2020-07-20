@@ -2,8 +2,18 @@ const Graph = require("../../dataStructures/graph/Graph");
 const { dijstraks, getPath } = require("./dijkstras");
 const { stringComparator } = require("../sort/common");
 
+// https://youtu.be/ySN5Wnu88nE?t=239
+test("Routing Algorithms - A*", () => {
+  let euclideanDistances = {
+    S: 10,
+    A: 9,
+  };
+
+  let myGraph = new Graph().addLink("S", "A", true, 7);
+});
+
 // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
-test("Routing Algorithms Larger Graph", () => {
+test("Routing Algorithms - Dijkstra", () => {
   let myGraph = new Graph()
     .addLink("0", "1", true, 4)
     .addLink("0", "7", true, 8)
@@ -50,7 +60,7 @@ test("Routing Algorithms Larger Graph", () => {
     fromNode,
     stringComparator,
     (a, b) => a.localCompare(b),
-    "4" // this time specifying the toNode
+    { toNode: "4" } // this time specifying the toNode
   );
   let pathTo4only = getPath(shortestPathTree4only, "4");
   expect(pathTo4only).toEqual(["0", "7", "6", "5", "4"]);

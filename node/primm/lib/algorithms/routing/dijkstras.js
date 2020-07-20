@@ -15,6 +15,14 @@ function getPath(shortestPathTree, toNode) {
 }
 
 /**
+ * Default values for optional arguments.
+ */
+let defaultOptionalArgs = {
+  toNode: undefined, // {string} If we want to 'stop early' and only find the route to one node...specify it
+  getHeuristicCost: (node) => 0, // get the heuristic calculated cost for the given node
+};
+
+/**
  * Executes Dijkstras routing algorithm, returning the shortest path tree for the given source node.
  *
  * This algorithm can end early if the toNode is specified, here is a discussion of the validity of this...
@@ -23,10 +31,15 @@ function getPath(shortestPathTree, toNode) {
  * @param {Graph} graph The graph that contains all the nodes and links
  * @param {string} fromNode The node we are travelling from
  * @param {function} compare A function that accepts two nodes and compares them
- * @param {string | undefined} toNode If we want to 'stop early' and only find the route to one node...specify it
+ * @param {string | undefined} optionalArguments // Optional arguments, see above for default values
  * @returns Shortest Path Tree { [node] : {cost: number, viaNode: string} }
  */
-function dijstraks(graph, fromNode, compare, toNode = undefined) {
+function dijstraks(
+  graph,
+  fromNode,
+  compare,
+  { toNode, getHeuristicCost } = defaultOptionalArgs
+) {
   let shortestPathTree = {};
 
   // Build a priority queue, where the nodes are arranged in order of
@@ -82,7 +95,8 @@ function dijstraks(graph, fromNode, compare, toNode = undefined) {
           });
         } else {
           // What is the distance to this other node, from our current node?
-          let newPotentialDistance = currentItem.cost + weight;
+          let newPotentialDistance =
+            currentItem.cost + weight + getHeuristicCost(currentItem.node);
 
           // Have we found a shorter route?
           if (newPotentialDistance < otherItem.cost) {
