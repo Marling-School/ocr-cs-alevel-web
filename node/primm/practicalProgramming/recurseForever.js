@@ -1,5 +1,0 @@
-function chickenOrEgg() {
-    chickenOrEgg()
-}
-
-chickenOrEgg()

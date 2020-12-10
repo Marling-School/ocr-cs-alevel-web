@@ -1,6 +1,0 @@
-{
-  "watch": ["src/**/*.js"],
-  "ignore": ["src/**/*.spec.js"],
-  "exec": "npm start",
-  "ext": "js"
-}
